@@ -16,7 +16,13 @@ const AdminUpdatePage = () => {
   useEffect( ()=>{
     const fetchcard = async() =>{
       try {
-        const res = await axios.get(`http://localhost:5001/admin/${id}`)
+        const token=localStorage.getItem("token");
+        const res = await axios.get(`http://localhost:5001/admin/${id}`,{
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+        )
         setCard(res.data)
       } catch (error) {
         toast.error("cant get card")
@@ -33,7 +39,12 @@ const AdminUpdatePage = () => {
 
 const handledelete = async() => {
   try {
-    await axios.delete(`http://localhost:5001/admin/${id}`);
+    const token=localStorage.getItem("token");
+    await axios.delete(`http://localhost:5001/admin/${id}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    });
     toast.success("deleted");
     navigate("/admin")
   } catch (error) {
@@ -43,7 +54,14 @@ const handledelete = async() => {
 
 const handlesubmit = async() => {
   try {
-    await axios.put(`http://localhost:5001/admin/${id}`,card)
+    const token=localStorage.getItem("token");
+    await axios.put(
+      `http://localhost:5001/admin/${id}`,
+      card, // data
+      {
+        headers: { Authorization: `Bearer ${token}` } // config
+      }
+    );
     toast.success("updated");
     navigate("/admin")
   } catch (error) {

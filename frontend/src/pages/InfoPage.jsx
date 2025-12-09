@@ -16,7 +16,7 @@ const InfoPage = () => {
   useEffect( ()=>{
     const fetchall = async() => {
       try {
-        const res=await axios.get(`http://localhost:5001/admin/${id}`);
+        const res=await axios.get(`http://localhost:5001/${id}`);
         setCard(res.data)                                                         //pe
       } catch (error) {
         toast.error("errro getting card")
@@ -31,7 +31,7 @@ const InfoPage = () => {
 
   const handlesubmit = async() => {
     try {
-      await axios.put(`http://localhost:5001/admin/${id}`,card);
+      await axios.put(`http://localhost:5001/${id}`,card);
       if(ischanged)
       {
         toast.success("Your Vehicle Has Been Booked")

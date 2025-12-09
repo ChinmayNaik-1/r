@@ -5,6 +5,8 @@ import AdminUpdatePage from './pages/AdminUpdatePage'
 import HomePage from './pages/HomePage.jsx'
 import InfoPage from './pages/InfoPage'
 import AdminCreatePage from './pages/AdminCreatePage.jsx'
+import SignUp from './pages/signup.jsx'
+import Login from './pages/Login.jsx'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/admin" element={<AdminHomePage />} />
         <Route path="/admin/:id" element={<AdminUpdatePage />} />
         <Route path="admin/create" element={<AdminCreatePage/>}/>
+        <Route path="/users/signup" element={<SignUp/>} />
+        <Route path="/users/login" element={<Login/>} />
       </Routes>
     </div>
   )

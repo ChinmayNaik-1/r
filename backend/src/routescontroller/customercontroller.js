@@ -21,3 +21,12 @@ export async function updateState(req,res){
         res.status(500).json({message:"internal server error"})
     }
 }
+
+export async function getById(req,res){
+    try {
+        const card = await Bike.findById(req.params.id)
+        res.status(200).json(card)
+    } catch (error) {
+        res.status(500).json({message:"error in id getting"})
+    }
+}
