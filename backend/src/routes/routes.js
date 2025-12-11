@@ -1,5 +1,5 @@
 import express from "express"
-import { getCards, updateState,getById } from "../routescontroller/customercontroller.js";
+import { getCards, updateState,getById, filters } from "../routescontroller/customercontroller.js";
 import { adGetCards,adCreate,adUpdate,adDeleteCard, adGetByID } from "../routescontroller/admincontroller.js";
 import { login, showusers, signup } from "../routescontroller/authcontroller.js";
 import { protect } from "../middleware/auth.js";
@@ -17,6 +17,7 @@ routes.delete("/admin/:id",protect,adDeleteCard);
 //customer routes
 routes.get("/",getCards);      
 routes.put("/:id",updateState);
+routes.get("/filter",filters);
 routes.get("/:id",getById);
 
 

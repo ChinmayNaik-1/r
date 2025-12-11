@@ -7,18 +7,20 @@ import InfoPage from './pages/InfoPage'
 import AdminCreatePage from './pages/AdminCreatePage.jsx'
 import SignUp from './pages/signup.jsx'
 import Login from './pages/Login.jsx'
+import Search from './pages/Search.jsx'
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/filter" element={<HomePage />} />
         <Route path="/:id" element={<InfoPage />} />
         <Route path="/admin" element={<AdminHomePage />} />
         <Route path="/admin/:id" element={<AdminUpdatePage />} />
         <Route path="admin/create" element={<AdminCreatePage/>}/>
         <Route path="/users/signup" element={<SignUp/>} />
         <Route path="/users/login" element={<Login/>} />
+        <Route path="/search" element={<Search/>} />
       </Routes>
     </div>
   )

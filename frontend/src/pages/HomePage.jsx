@@ -4,16 +4,19 @@ import { useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Createcard from "../components/Createcard";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const HomePage = () => {
   const [cards,setCards] = useState([]);
   const [loading,setLoading] = useState(true);
 
+  const location= useLocation()
+  const query=new URLSearchParams(location.search).get("search") || "";
+
   useEffect ( ()=>{
     const fetchall = async ()=> {
       try {
-        const res = await axios.get("http://localhost:5001");
+        const res = await axios.get(`http://localhost:5001/filter?search=${query}`);
         console.log(res.data)
         setCards(res.data)
       } catch (error) {
@@ -25,7 +28,7 @@ const HomePage = () => {
     }
     
     fetchall();
-  },[])
+  },[query])
 
 
 

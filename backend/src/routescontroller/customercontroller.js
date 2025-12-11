@@ -30,3 +30,30 @@ export async function getById(req,res){
         res.status(500).json({message:"error in id getting"})
     }
 }
+
+
+export async function filters(req,res) {
+    try {
+        const search = req.query.search || ""
+        let filter={}
+        if (search.trim() != "")
+        {
+            filter = {
+                $or:[
+                    {name : {$regex:search , $options:"i"}},
+                    {location : {$regex:search , $options:"i"}}
+                ]
+            }
+            
+            const data= await Bike.find(filter);
+            res.status(200).json(data);
+        }
+        else
+        {
+            const data = await Bike.find()
+            res.status(200).json(data)
+        }
+    } catch (error) {
+        res.status(500).json({message:"error filtering"})
+    }
+}

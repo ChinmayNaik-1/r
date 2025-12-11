@@ -53,7 +53,7 @@ const InfoPage = () => {
 
    return (
     <div className="min-h-screen p-6">
-      <Link to="/" className="btn mb-4">Back</Link>
+      <Link to="/filter" className="btn mb-4">Back</Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 bg-base-300 p-6 rounded-lg max-w-4xl mx-auto">
 
