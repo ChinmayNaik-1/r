@@ -12,6 +12,7 @@ const Navbar = () => {
         <div>
             <Link to="/users/login" className='m-3 btn btn-primary'>Log-in</Link>
             <Link to="/users/signup" className='m-3 btn btn-primary'>sign-up</Link>
+            <Link to="https://chatgpt.com/g/g-693afe7cf278819184785ecd1f9481bf-rental-buddy" className='m-3 btn btn-primary'>chatbot</Link>
             <button onClick={logout} className="m-3 btn bg-red-500 p-2">Log-out</button>
         </div>
     </header>
