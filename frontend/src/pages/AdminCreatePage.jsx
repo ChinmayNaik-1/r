@@ -19,13 +19,11 @@ const AdminCreatePage = () => {
             return;
         }
         try {
-            await axios.post("http://localhost:5001/admin/create",{
-                image,
-                name,
-                location,
-                price,
-                booked
-            })
+            const token=localStorage.getItem("token")
+            await axios.post(
+                "http://localhost:5001/admin/create",
+                {image,name,location,price,booked},
+                {headers:{Authorization: `Bearer ${token}`}})
             toast.success("created successfully");
             navigate("/admin")
         } catch (error) {
@@ -34,60 +32,67 @@ const AdminCreatePage = () => {
         }
     }
     
-  return (
-    <div>
-        <Link to="/admin" className="btn bg-base-300">
-            back to home
+    return (
+    <div className="min-h-screen max-w-4xl mx-auto">
+      <div className="flex flex-col mx-auto bg-yellow-400 p-4 m-7 rounded-md">
+        {/* Back to home */}
+        <Link to="/admin" className="btn mb-4">
+          Back to Home
         </Link>
-        <form onSubmit={handleSubmit}>
-            <div className="container mx-auto p-4 m-5 bg-base-300">
-                <label className="label">
-                    <span className="label-text">Image URL:</span>
-                </label>
-                <input
-                    className="input input-bordered w-full"
-                    type="text"
-                    placeholder="Leave empty if you dont have an image"
-                    onChange={(e) => setImage(e.target.value)}
-                />
 
-                <label className="label mt-4">
-                    <span className="label-text">Name:</span>
-                </label>
-                <input
-                    className="input input-bordered w-full"
-                    type="text"
-                    placeholder="xyz"
-                    onChange={(e) => setName(e.target.value)}
-                />
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <label className="label">
+            <span className="label-text">Image URL:</span>
+          </label>
+          <input
+            className="input w-full"
+            type="text"
+            placeholder="Leave empty if you don't have an image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
 
-                <label className="label mt-4">
-                    <span className="label-text">Location:</span>
-                </label>
-                <input
-                    className="input input-bordered w-full"
-                    type="text"
-                    placeholder="xyz"
-                    onChange={(e) => setLocation(e.target.value)}
-                />
+          <label className="label">
+            <span className="label-text">Name:</span>
+          </label>
+          <input
+            className="input w-full"
+            type="text"
+            placeholder="xyz"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-                <label className="label mt-4">
-                    <span className="label-text">Price:</span>
-                </label>
-                <input
-                    className="input input-bordered w-full"
-                    type="number"
-                    placeholder="10,000"
-                    onChange={(e) => setPrice(e.target.value)}
-                />
+          <label className="label">
+            <span className="label-text">Location:</span>
+          </label>
+          <input
+            className="input w-full"
+            type="text"
+            placeholder="xyz"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
 
-                <button type="submit">Create New</button>
+          <label className="label">
+            <span className="label-text">Price:</span>
+          </label>
+          <input
+            className="input w-full"
+            type="number"
+            placeholder="10,000"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
 
-            </div>
+          <button type="submit" className="btn bg-green-700 mt-5">
+            Create New
+          </button>
         </form>
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default AdminCreatePage

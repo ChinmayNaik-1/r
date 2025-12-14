@@ -55,7 +55,7 @@ const InfoPage = () => {
     <div className="min-h-screen p-6">
       <Link to="/filter" className="btn mb-4">Back</Link>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 bg-base-300 p-6 rounded-lg max-w-4xl mx-auto">
+      <div className="bg-gray-800 text-white grid grid-cols-1 md:grid-cols-2 bg-base-300 p-6 rounded-lg max-w-4xl mx-auto">
 
         {/* LEFT-IMAGE */}
         <div>

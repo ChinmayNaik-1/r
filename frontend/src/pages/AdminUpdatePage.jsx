@@ -75,13 +75,13 @@ if(loading)
 }
 
   return (
-    <div className="min-h-screen max-w-4xl">
-      <div className="flex flex-col mx-auto bg-base-300 p-4 m-7">
+    <div className="min-h-screen max-w-4xl mx-auto">
+      <div className="flex flex-col mx-auto bg-base-300 p-4 m-7 bg-yellow-400">
         <div className="flex align-center justify-between">
           <Link to="/admin" className="btn">
           back to home
           </Link>
-          <button onClick={handledelete} className="btn">
+          <button onClick={handledelete} className="btn bg-red-600 p-3">
           delete
           </button>
         </div>

@@ -37,7 +37,9 @@ const AdminHomePage = () => {
           return     <Link to={`/admin/${card._id}`} key={card._id}><Createcard card={card}/></Link>
         })}
       </div>
-      <Link to="/admin/create" className="btn bg-green-800">Create New</Link>
+      <div className="text-center">
+      <Link to="/admin/create" className="btn bg-green-800 mx-auto">Create New</Link>
+      </div>
     </div>
   )
 }
